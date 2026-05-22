@@ -102,9 +102,8 @@ export default function HospitalHomepage() {
                       Memantau form input data pasien secara real-time dari driver/perawat ambulans mencakup data identitas, status 4 parameter tanda vital, serta log tindakan pra-hospital.
                     </p>
                   </div>
-                  {/* PERBAIKAN: Mengubah rute agar mengarah ke folder internal /hospital/dashboard */}
                   <Link 
-                    href="/hospital/dashboard"
+                    href="/dashboard"
                     className="w-full sm:w-auto bg-[#192e59] hover:bg-[#122242] text-white px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-none transition-colors whitespace-nowrap shadow-xs text-center"
                   >
                     Masuk Modul &rarr;
