@@ -80,10 +80,9 @@ export default function HospitalDashboard() {
       {/* 3. PANEL MONITOR DATA UTAMA */}
       <section className="flex-1 bg-white p-6 overflow-y-auto flex flex-col justify-between min-w-0">
         <div>
-          {/* NAVIGASI KEMBALI */}
           <div className="mb-4 flex items-center text-left">
             <Link 
-              href="/hospital" 
+              href="/" 
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#192e59] hover:text-red-600 transition-colors font-mono uppercase tracking-wider"
             >
               <ArrowLeft size={14} strokeWidth={2.5} /> Kembali Ke Portal Utama
