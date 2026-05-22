@@ -87,7 +87,7 @@ export default function HospitalDashboard() {
             {/* NAVIGASI KEMBALI */}
             <div className="mb-4 flex items-center text-left">
               <Link 
-                href="/hospital" 
+                href="/dashboard" 
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#192e59] hover:text-red-600 transition-colors font-mono uppercase tracking-wider"
               >
                 <ArrowLeft size={14} strokeWidth={2.5} /> Kembali Ke Portal Utama
