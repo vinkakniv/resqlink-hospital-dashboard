@@ -23,14 +23,14 @@ export default function PreHospitalActionsLog({ actions }: PreHospitalActionsLog
         {actions.map((act, index) => (
           <div 
             key={index}
-            className={`p-3 rounded border flex items-center justify-between text-xs font-semibold ${
+            className={`p-3 rounded-none border flex items-center justify-between text-xs font-semibold ${
               act.status 
                 ? 'bg-emerald-50 border-emerald-300 text-emerald-800' 
                 : 'bg-slate-50 border-slate-200 text-slate-400'
             }`}
           >
             <span>{act.name}</span>
-            <div className={`w-5 h-5 rounded-full flex items-center justify-center border ${
+            <div className={`w-5 h-5 rounded-none flex items-center justify-center border ${
               act.status 
                 ? 'bg-emerald-600 border-emerald-600 text-white' 
                 : 'bg-white border-slate-300'

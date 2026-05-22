@@ -25,7 +25,7 @@ export default function AmbulanceQueuePanel({ ambulances, selectedId, onSelect }
     <section className="w-80 bg-white border-r border-slate-200 flex flex-col">
       <div className="p-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between text-left">
         <h2 className="font-bold text-xs uppercase tracking-wider text-slate-500">Ambulans Menuju Rujukan</h2>
-        <span className="bg-slate-200 px-2 py-0.5 rounded text-xs font-bold text-slate-700">
+        <span className="bg-slate-200 px-2 py-0.5 rounded-none text-xs font-bold text-slate-700">
           {ambulances.length} Rujukan
         </span>
       </div>
@@ -39,7 +39,7 @@ export default function AmbulanceQueuePanel({ ambulances, selectedId, onSelect }
             <div
               key={amb.id}
               onClick={() => onSelect(amb)}
-              className={`p-4 rounded border transition-all cursor-pointer text-left ${
+              className={`p-4 rounded-none border transition-all cursor-pointer text-left ${
                 isSelected 
                   ? 'bg-amber-50/40 border-amber-500 shadow-xs' 
                   : 'bg-white border-slate-200 hover:bg-slate-50'
@@ -52,6 +52,7 @@ export default function AmbulanceQueuePanel({ ambulances, selectedId, onSelect }
                 </span>
               </div>
               <div className="flex items-center gap-2">
+                {/* Indikator titik triase tetap berbentuk lingkaran (rounded-full) agar estetik sebagai penanda */}
                 <div className={`w-2 h-2 rounded-full ${triageIndicator}`} />
                 <h3 className="font-bold text-sm text-slate-900">{amb.patient.name}</h3>
               </div>
