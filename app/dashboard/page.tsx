@@ -136,16 +136,6 @@ export default function HospitalDashboard() {
             <PreHospitalActionsLog actions={selectedAmb.actions} />
           </div>
 
-          {/* BARU - 5. FOOTER INTERNAL (STYLE CS UI): Flat, tipis, di bagian paling bawah panel */}
-          <footer className="mt-12 py-4 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-2 text-[11px] text-slate-400 font-mono">
-            <div>
-              &copy; 2026 RS Universitas Indonesia × ResQLink Platform.
-            </div>
-            <div className="text-slate-400">
-              NODE_ID: LIVE-IGD-STATION-01 // SECURE_MODE
-            </div>
-          </footer>
-
         </section>
       </main>
     </div>
