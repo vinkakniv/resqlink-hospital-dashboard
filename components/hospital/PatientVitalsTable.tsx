@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import { Activity } from 'lucide-react';
 
 interface Vitals {
   consciousness: string;
@@ -16,61 +15,40 @@ interface PatientVitalsTableProps {
 }
 
 export default function PatientVitalsTable({ vitals }: PatientVitalsTableProps) {
-  // Mengecek apakah saturasi oksigen rendah di bawah threshold klinis
-  const isHypoxia = parseInt(vitals.spo2) < 92;
+  const spo2Val = parseInt(vitals.spo2);
+  const isHypoxia = spo2Val < 92;
+
+  const VitalCell = ({ label, value, unit, isAlert }: any) => (
+    <div className={`border border-[#808080] p-2 bg-white ${isAlert ? 'bg-red-50 ring-1 ring-inset ring-red-200' : ''}`}>
+      <div className={`text-[9px] font-bold uppercase border-b border-[#e0e0e0] mb-2 ${isAlert ? 'text-red-700' : 'text-gray-500'}`}>
+        {label}
+      </div>
+      <div className="flex items-baseline gap-1">
+        <span className={`text-2xl font-black tabular-nums ${isAlert ? 'text-red-700 underline' : 'text-black'}`}>
+          {value}
+        </span>
+        <span className={`text-[10px] font-bold ${isAlert ? 'text-red-600' : 'text-gray-400'}`}>
+          {unit}
+        </span>
+      </div>
+    </div>
+  );
 
   return (
-    <div className="mb-6 text-left">
-      <div className="text-xs uppercase tracking-widest font-bold text-slate-400 mb-3 flex items-center gap-1.5">
-        <Activity size={14} className="text-slate-500" /> Tanda-Tanda Vital (Pra-RS)
+    <div className="space-y-2">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
+        <VitalCell label="Saturasi O2" value={vitals.spo2.replace('%', '')} unit="%" isAlert={isHypoxia} />
+        <VitalCell label="Detak Jantung" value={vitals.heartRate.split(' ')[0]} unit="BPM" />
+        <VitalCell label="Tekanan Darah" value={vitals.bloodPressure.split(' ')[0]} unit="mmHg" />
+        <VitalCell label="Gula Darah" value={vitals.bloodSugar.split(' ')[0]} unit="mg/dL" />
+        <VitalCell label="Kesadaran" value={vitals.consciousness.split(' ')[0]} unit="Scale" />
       </div>
       
-      <div className="border border-slate-200 rounded-none overflow-hidden">
-        <table className="w-full text-sm text-left border-collapse bg-white">
-          <thead>
-            <tr className="bg-slate-100 text-slate-600 text-xs font-bold uppercase border-b border-slate-200">
-              <th className="px-4 py-3">Parameter Medis</th>
-              <th className="px-4 py-3">Nilai Input Form</th>
-              <th className="px-4 py-3">Status Klinis Rumah Sakit</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-200">
-            <tr>
-              <td className="px-4 py-3.5 font-medium text-slate-500">Tingkat Kesadaran</td>
-              <td className="px-4 py-3.5 font-bold font-mono text-slate-900">{vitals.consciousness}</td>
-              <td className="px-4 py-3.5"><span className="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded-none font-medium border border-blue-200">Terpantau</span></td>
-            </tr>
-            <tr>
-              <td className="px-4 py-3.5 font-medium text-slate-500">Tekanan Darah (Sistolik / Diastolik)</td>
-              <td className="px-4 py-3.5 font-bold font-mono text-slate-900">{vitals.bloodPressure}</td>
-              <td className="px-4 py-3.5"><span className="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded-none font-medium border border-slate-200">Normal Tinggi</span></td>
-            </tr>
-            <tr>
-              <td className="px-4 py-3.5 font-medium text-slate-500">Saturasi Oksigen (SpO2)</td>
-              <td className="px-4 py-3.5 font-bold font-mono text-red-600 text-md">{vitals.spo2}</td>
-              <td className="px-4 py-3.5">
-                {isHypoxia ? (
-                  <span className="text-xs bg-red-50 text-red-700 px-2 py-0.5 rounded-none font-bold border border-red-200 animate-pulse">
-                    🚨 Hipoksia / Butuh Oksigenasi
-                  </span>
-                ) : (
-                  <span className="text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-none font-medium border border-emerald-200">
-                    Normal
-                  </span>
-                )}
-              </td>
-            </tr>
-            <tr>
-              <td className="px-4 py-3.5 font-medium text-slate-500">Detak Jantung (Pulse)</td>
-              <td className="px-4 py-3.5 font-bold font-mono text-slate-900">{vitals.heartRate}</td>
-              <td className="px-4 py-3.5"><span className="text-xs bg-amber-50 text-amber-700 px-2 py-0.5 rounded-none font-medium border border-amber-200">Takikardia Ringan</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div className="text-[11px] text-slate-400 font-mono mt-2 pl-2">
-        * Gula Darah Sewaktu (Opsional): <span className="font-bold text-slate-700">{vitals.bloodSugar}</span>
-      </div>
+      {isHypoxia && (
+        <div className="bg-red-800 text-white p-2 border-2 border-white text-xs font-bold uppercase text-center shadow-sm">
+          PERINGATAN: KONDISI HIPOKSIA TERDETEKSI (SPO2 &lt; 92%)
+        </div>
+      )}
     </div>
   );
 }

@@ -3,199 +3,136 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { LayoutDashboard, Activity, Phone, ShieldAlert, Clock, ChevronRight } from 'lucide-react';
 
 export default function HospitalHomepage() {
-  const currentDateTime = "Jumat, 22 Mei 2026 | 20:38 WIB";
+  const currentDateTime = "Sabtu, 23 Mei 2026 | 09:15 WIB";
 
   return (
-    <div className="min-h-screen bg-[#F4F7F6] text-[#1E293B] antialiased flex flex-col w-full overflow-x-hidden font-sans">
+    <div className="min-h-screen bg-[#d4d0c8] text-black antialiased flex flex-col w-full overflow-hidden text-sm">
       
-      {/* 1. TOP BAR INFO */}
-      <div className="w-full bg-[#0A1224] text-slate-400 text-[11px] font-mono border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-auto py-2 sm:h-9 flex flex-col sm:flex-row justify-between items-center gap-1 sm:gap-0 tracking-wider text-center sm:text-left">
-          <div>UNIT PELAYANAN TEKNOLOGI MEDIS INTEGRASI</div>
-          <div className="flex items-center gap-2">
-            <Clock size={12} className="text-slate-500" />
-            <span>{currentDateTime}</span>
+      {/* SYSTEM TOP BAR */}
+      <div className="w-full bg-[#000080] text-white px-2 py-1 flex justify-between items-center font-bold border-b border-white">
+        <div className="flex gap-4 items-center">
+          <div className="bg-white p-0.5">
+             <Image src="/assets/images/ResQLink_Logo.png" alt="Logo" width={16} height={16} className="grayscale" />
           </div>
+          <span>SISTEM INFORMASI RUMAH SAKIT UNIVERSITAS INDONESIA</span>
+        </div>
+        <div className="flex gap-4">
+          <span>{currentDateTime}</span>
+          <span className="border-l border-white/50 pl-4">LOGIN: ADMIN_01</span>
         </div>
       </div>
 
-      <header className="w-full bg-[#192e59] text-white border-b-4 border-red-600 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-0 sm:h-24 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
-          
-          {/* Sisi Kiri: Logo & Kelompok Judul */}
-          <div className="flex items-center gap-3 text-left w-full sm:w-auto">
-            <div className="bg-white p-1.5 rounded-sm flex items-center justify-center border border-slate-200 shrink-0 w-10 h-10 sm:w-12 sm:h-12">
-              <Image 
-                src="/assets/images/ResQLink_Logo.png" 
-                alt="ResQLink Logo"
-                width={32}
-                height={32}
-                className="object-contain"
-              />
-            </div>
-            <div className="flex-1 min-w-0">
-              <h1 className="text-sm sm:text-xl font-black tracking-tight leading-tight font-mono text-white break-words">
-                RESQLINK INTEGRATED HOSPITAL
-              </h1>
-              <span className="text-[9px] sm:text-xs text-slate-300 tracking-wider font-medium uppercase mt-1 block whitespace-normal sm:whitespace-nowrap">
-                Sistem Pusat Kontrol Informasi & Operasional Gawat Darurat
-              </span>
-            </div>
-          </div>
-
-          {/* Sisi Kanan: Status Node Active */}
-          <div className="flex items-center gap-2 bg-[#112244] px-3 py-1.5 sm:px-4 sm:py-2 border border-slate-700 rounded-sm shrink-0 self-stretch sm:self-auto justify-center">
-            <span className="text-[10px] sm:text-[11px] text-white font-bold tracking-wider uppercase flex items-center gap-2">
-              <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-              IGD NODE ACTIVE
-            </span>
-          </div>
-
+      {/* HEADER AREA */}
+      <header className="bg-[#f0f0f0] border-b border-[#808080] p-4 flex items-center gap-6">
+        <div className="bg-white border-2 border-inset p-2 shadow-inner">
+          <Image src="/assets/images/ResQLink_Logo.png" alt="ResQLink" width={48} height={48} className="grayscale" />
+        </div>
+        <div>
+          <h1 className="text-2xl font-bold text-[#000080] leading-none mb-1">ResQLink Medical Terminal</h1>
+          <p className="font-bold text-[#404040] uppercase tracking-tighter">Terminal Pusat Kendali Gawat Darurat dan Respon Cepat</p>
         </div>
       </header>
 
-      {/* 3. HERO / DAERAH PENGUMUMAN UTAMA */}
-      <section className="w-full bg-white border-b border-slate-200 shadow-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 text-left">
-          <div className="flex flex-wrap items-center gap-1 sm:gap-2 text-[11px] text-slate-400 mb-2 font-mono">
-            <span>Portal Utama</span>
-            <ChevronRight size={10} />
-            <span>Rumah Sakit</span>
-            <ChevronRight size={10} />
-            <span className="text-[#192e59] font-bold">Beranda Operasional</span>
-          </div>
-          <h2 className="text-xl sm:text-2xl font-bold text-[#192e59] tracking-tight mb-2">
-            Sistem Pemantauan Pra-Rumah Sakit Terintegrasi
-          </h2>
-          <p className="text-slate-600 text-xs sm:text-sm max-w-5xl leading-relaxed">
-            Portal ini berfungsi sebagai pusat koordinasi taktis internal antara tim medis lapangan (Ambulans) dan unit gawat darurat (IGD). Pastikan petugas administrasi selalu memantau Dashboard Triase untuk mempersiapkan penanganan pasien rujukan kritis sebelum armada tiba di lokasi penjemputan rumah sakit.
-          </p>
-        </div>
-      </section>
-
-      {/* 4. AREA SEKSI KONTEN */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 flex-1">
-        <div className="flex flex-col lg:flex-row gap-6 items-start justify-between">
+      {/* MAIN CONTENT AREA */}
+      <main className="p-6 flex-1 overflow-auto">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-12 gap-6">
           
-          {/* KOLOM KIRI & TENGAH (Aplikasi Utama) */}
-          <div className="w-full lg:w-2/3 space-y-6 flex-shrink-0 text-left">
-            <div className="bg-white border border-slate-200 rounded-none shadow-xs">
-              <div className="p-4 bg-slate-50 border-b border-slate-200 flex items-center gap-2">
-                <LayoutDashboard size={16} className="text-[#192e59]" />
-                <h3 className="font-bold text-xs uppercase tracking-wider text-slate-700">Aplikasi Sistem & Modul Utama</h3>
-              </div>
-              
-              <div className="p-0 divide-y divide-slate-200">
-                {/* ITEM MODUL 1: MONITOR TRIASE */}
-                <div className="p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:bg-slate-50/50 transition-colors">
-                  <div className="flex-1 space-y-1">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-red-600" />
-                      <h4 className="font-bold text-sm text-slate-900">
-                        Monitor Triase & Notifikasi Pra-RS (IGD Live Feed)
-                      </h4>
-                    </div>
-                    <p className="text-xs text-slate-500 pl-4 leading-relaxed">
-                      Memantau form input data pasien secara real-time dari driver/perawat ambulans mencakup data identitas, status 4 parameter tanda vital, serta log tindakan pra-hospital.
-                    </p>
-                  </div>
+          {/* LEFT: MAIN MODULES */}
+          <div className="col-span-12 lg:col-span-8 space-y-6">
+            <div className="bg-[#c0c0c0] border-t border-l border-white border-r border-b border-[#404040]">
+              <div className="bg-[#000080] text-white px-2 py-1 font-bold">Modul Aplikasi Tersedia</div>
+              <div className="p-4 bg-[#f0f0f0] grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                {/* MONITOR MODULE */}
+                <div className="bg-[#d4d0c8] border-t border-l border-white border-r border-b border-[#404040] p-4 flex flex-col h-[220px]">
+                  <h3 className="font-bold text-[#000080] border-b border-[#808080] pb-2 mb-3 underline">1. MONITOR PASIEN IGD</h3>
+                  <p className="text-xs leading-tight mb-4 flex-1">
+                    Pemantauan unit ambulans aktif. Akses tanda vital pasien, data triase, dan log tindakan medis secara langsung dari lapangan.
+                  </p>
                   <Link 
                     href="/dashboard"
-                    className="w-full sm:w-auto bg-[#192e59] hover:bg-[#122242] text-white px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-none transition-colors whitespace-nowrap shadow-xs text-center"
+                    className="bg-[#d4d0c8] border-t-2 border-l-2 border-white border-r-2 border-b-2 border-[#404040] text-center py-2 font-bold hover:bg-[#c0c0c0] active:border-inset"
                   >
-                    Masuk Modul &rarr;
+                    JALANKAN MONITOR
                   </Link>
                 </div>
 
-                {/* ITEM MODUL 2: LOG REKAM MEDIS (TERKUNCI) */}
-                <div className="p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 opacity-60 bg-white">
-                  <div className="flex-1 space-y-1">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-slate-400" />
-                      <h4 className="font-bold text-sm text-slate-800">
-                        Arsip Manifes & Data Klinis Pasien Rujukan
-                      </h4>
-                    </div>
-                    <p className="text-xs text-slate-500 pl-4 leading-relaxed">
-                      Eksplorasi data historis pasien gawat darurat yang telah divalidasi dan diselesaikan pembayarannya oleh pihak driver ambulans di lapangan.
-                    </p>
+                {/* ARCHIVE MODULE */}
+                <div className="bg-[#d4d0c8] border-t border-l border-white border-r border-b border-[#404040] p-4 flex flex-col h-[220px] opacity-60">
+                  <h3 className="font-bold text-gray-600 border-b border-[#808080] pb-2 mb-3">2. REKAM MEDIS HISTORIS</h3>
+                  <p className="text-xs leading-tight mb-4 flex-1">
+                    Akses basis data pasien lama dan arsip rujukan. Memerlukan otorisasi Supervisor (Level 4).
+                  </p>
+                  <div className="bg-[#b4b0a8] border-2 border-gray-400 text-gray-500 text-center py-2 font-bold cursor-not-allowed">
+                    AKSES DIBATASI
                   </div>
-                  <button disabled className="w-full sm:w-auto bg-slate-100 text-slate-400 border border-slate-200 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-none cursor-not-allowed whitespace-nowrap text-center">
-                    Terkunci
-                  </button>
                 </div>
+
               </div>
+            </div>
+
+            <div className="bg-[#ffffcc] border border-[#808080] p-3 shadow-sm">
+              <span className="font-bold underline uppercase block mb-1">Catatan Operasional:</span>
+              <p className="text-xs leading-tight">
+                Seluruh aktivitas terminal ini dipantau oleh server pusat. Harap lakukan verifikasi data unit lapangan setiap 15 menit. Laporan kegagalan sistem harus segera diteruskan ke bagian IT.
+              </p>
             </div>
           </div>
 
-          {/* KOLOM KANAN: Status Bed & Kontak Krisis */}
-          <div className="w-full lg:w-1/3 space-y-6 flex-shrink-0 text-left">
-            
-            {/* PANEL KAPASITAS BED */}
-            <div className="bg-white border border-slate-200 rounded-none shadow-xs">
-              <div className="p-4 bg-slate-50 border-b border-slate-200 flex items-center gap-2">
-                <Activity size={16} className="text-emerald-600" />
-                <h3 className="font-bold text-xs uppercase tracking-wider text-slate-700">Status Kapasitas Bed Kritis</h3>
-              </div>
-              <div className="p-4">
-                <table className="w-full text-xs text-left border-collapse border border-slate-200">
-                  <thead>
-                    <tr className="bg-slate-100 border-b border-slate-200 text-slate-600 font-bold font-mono">
-                      <th className="p-2 border-r border-slate-200">Zonasi IGD</th>
-                      <th className="p-2 text-center">Status Alokasi</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-200 font-medium">
-                    <tr>
-                      <td className="p-2.5 border-r border-slate-200 text-slate-600">Total Ketersediaan Bed</td>
-                      <td className="p-2.5 text-center font-bold font-mono text-slate-800">10 Bed</td>
-                    </tr>
-                    <tr className="bg-red-50/40">
-                      <td className="p-2.5 border-r border-slate-200 text-slate-600">Terisi Pasien Live Feed</td>
-                      <td className="p-2.5 text-center font-bold font-mono text-red-600">6 Unit</td>
-                    </tr>
-                    <tr className="bg-emerald-50/40">
-                      <td className="p-2.5 border-r border-slate-200 text-slate-600">Sisa Kapasitas Kosong</td>
-                      <td className="p-2.5 text-center font-bold font-mono text-emerald-600">4 Unit</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div className="mt-3 p-2.5 bg-emerald-50 text-emerald-800 text-[11px] font-medium border border-emerald-200 rounded-none flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse shrink-0" />
-                  <span>Daya tampung IGD dalam ambang batas aman.</span>
-                </div>
+          {/* RIGHT: SYSTEM STATUS */}
+          <div className="col-span-12 lg:col-span-4 space-y-4">
+            <div className="bg-[#c0c0c0] border-t border-l border-white border-r border-b border-[#404040]">
+              <div className="bg-[#000080] text-white px-2 py-1 font-bold">Status Layanan Unit</div>
+              <div className="p-3 bg-[#f0f0f0]">
+                 <div className="bg-white border-2 border-inset p-2 mb-4">
+                   <table className="w-full text-xs font-bold border-collapse">
+                     <thead>
+                       <tr className="bg-[#d4d0c8] border-b border-[#808080]">
+                         <th className="p-1 text-left">PARAMETER</th>
+                         <th className="p-1 text-right">VALUE</th>
+                       </tr>
+                     </thead>
+                     <tbody>
+                       <tr className="border-b border-[#e0e0e0]">
+                         <td className="p-1">KAPASITAS IGD</td>
+                         <td className="p-1 text-right">12 BED</td>
+                       </tr>
+                       <tr className="border-b border-[#e0e0e0] text-red-700">
+                         <td className="p-1">BED TERPAKAI</td>
+                         <td className="p-1 text-right">08 BED</td>
+                       </tr>
+                       <tr className="text-green-700 font-black">
+                         <td className="p-1">BED TERSEDIA</td>
+                         <td className="p-1 text-right text-lg">04 BED</td>
+                       </tr>
+                     </tbody>
+                   </table>
+                 </div>
+
+                 <div className="bg-red-800 text-white p-3 border-2 border-white mb-2">
+                    <span className="font-bold underline block mb-2">HOTLINE KOORDINASI</span>
+                    <div className="text-2xl font-black mb-1">(021) 5711-00</div>
+                    <p className="text-[10px] leading-none uppercase">Darurat Massal / Gangguan Sistem</p>
+                 </div>
+
+                 <button className="w-full bg-[#d4d0c8] border-t-2 border-l-2 border-white border-r-2 border-b-2 border-[#404040] py-2 font-bold hover:bg-[#c0c0c0] active:border-inset mt-4">
+                   KELUAR DARI SISTEM
+                 </button>
               </div>
             </div>
-
-            {/* PANEL EMERGENCY HOTLINE */}
-            <div className="bg-white border border-slate-200 rounded-none shadow-xs">
-              <div className="p-4 bg-slate-50 border-b border-slate-200 flex items-center gap-2">
-                <ShieldAlert size={16} className="text-red-600" />
-                <h3 className="font-bold text-xs uppercase tracking-wider text-slate-700">Pusat Komando Tanggap Krisis</h3>
-              </div>
-              <div className="p-4">
-                <p className="text-xs text-slate-500 leading-relaxed mb-4">
-                  Hubungi pusat kendali utama apabila ambulans eksternal mengalami kendala koordinasi atau membutuhkan rujukan penanganan trauma massal.
-                </p>
-                <div className="w-full flex items-center justify-center gap-2 bg-red-600 border border-red-700 text-white py-2.5 rounded-none text-xs font-mono font-bold tracking-widest">
-                  <Phone size={14} strokeWidth={2.5} /> HOTLINE: (021) 5711-00
-                </div>
-              </div>
-            </div>
-
           </div>
 
         </div>
-      </div>
+      </main>
 
-      {/* 5. FOOTER INSTITUSI */}
-      <footer className="w-full bg-[#0A1224] text-slate-400 py-6 border-t border-slate-800 text-xs mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-4 font-mono text-[11px] text-center md:text-left">
-          <div>&copy; 2026 ResQLink Medical Integrator Platform. Terdaftar pada Pusat Sistem Kontrol IGD Kritis.</div>
-          <div className="text-slate-600">Sistem Versi 2.4.0-Stable</div>
+      {/* FOOTER AREA */}
+      <footer className="bg-[#f0f0f0] border-t border-[#808080] px-4 py-2 flex justify-between items-center text-[11px] font-bold text-[#404040]">
+        <div>COPYRIGHT &copy; 2026 RS UNIVERSITAS INDONESIA • VER 2.4.0L</div>
+        <div className="flex gap-6 uppercase">
+          <a href="#" className="underline">Kebijakan Privasi</a>
+          <a href="#" className="underline">Pusat Bantuan</a>
         </div>
       </footer>
 

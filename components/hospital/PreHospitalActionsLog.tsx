@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import { Shield, Check } from 'lucide-react';
 
 interface Action {
   name: string;
@@ -14,31 +13,45 @@ interface PreHospitalActionsLogProps {
 
 export default function PreHospitalActionsLog({ actions }: PreHospitalActionsLogProps) {
   return (
-    <div className="text-left">
-      <div className="text-xs uppercase tracking-widest font-bold text-slate-400 mb-3 flex items-center gap-1.5">
-        <Shield size={14} className="text-slate-500" /> Log Tindakan Pra-Rumah Sakit (Ambulans)
+    <div className="bg-white border-2 border-inset">
+      <div className="bg-[#808080] text-white px-3 py-1 font-bold text-[10px] uppercase tracking-wider">
+        Log Intervensi Medis
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div className="divide-y divide-[#e0e0e0]">
         {actions.map((act, index) => (
           <div 
             key={index}
-            className={`p-3 rounded-none border flex items-center justify-between text-xs font-semibold ${
-              act.status 
-                ? 'bg-emerald-50 border-emerald-300 text-emerald-800' 
-                : 'bg-slate-50 border-slate-200 text-slate-400'
+            className={`flex items-center justify-between p-2 transition-colors ${
+              act.status ? 'bg-white' : 'bg-[#f8f8f8]'
             }`}
           >
-            <span>{act.name}</span>
-            <div className={`w-5 h-5 rounded-none flex items-center justify-center border ${
-              act.status 
-                ? 'bg-emerald-600 border-emerald-600 text-white' 
-                : 'bg-white border-slate-300'
+            <div className="flex items-center gap-4">
+              <div className={`w-4 h-4 border border-black flex items-center justify-center text-[10px] font-black ${act.status ? 'bg-white text-black' : 'bg-[#d4d0c8]'}`}>
+                {act.status ? '✓' : ''}
+              </div>
+              <span className={`text-[11px] font-bold uppercase tracking-tight ${act.status ? 'text-black' : 'text-gray-400 italic'}`}>
+                {act.name}
+              </span>
+            </div>
+            <div className={`text-[9px] font-bold uppercase border px-1.5 py-0.5 ${
+              act.status ? 'border-[#008000] text-[#008000] bg-green-50' : 'border-gray-300 text-gray-400'
             }`}>
-              {act.status && <Check size={12} strokeWidth={3} />}
+              {act.status ? 'TERVERIFIKASI' : 'BELUM'}
             </div>
           </div>
         ))}
+        {/* Empty fillers for consistency */}
+        {[...Array(Math.max(0, 4 - actions.length))].map((_, i) => (
+          <div key={`empty-${i}`} className="p-2 bg-white opacity-20">
+             <div className="h-4 w-1/3 bg-gray-100" />
+          </div>
+        ))}
+      </div>
+      
+      <div className="p-2 bg-[#d4d0c8] border-t border-[#808080] flex justify-between items-center">
+        <span className="text-[9px] font-bold text-slate-600 italic">SUMBER DATA: UNIT LAPANGAN RESQLINK v2</span>
+        <span className="text-[9px] font-black text-[#000080]">INTEGRITAS: 100%</span>
       </div>
     </div>
   );
